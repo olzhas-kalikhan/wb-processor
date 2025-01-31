@@ -1,13 +1,8 @@
 import eslint from '@eslint/js';
-
 import node from 'eslint-plugin-node';
-
 import jsdoc from 'eslint-plugin-jsdoc';
-
 import prettier from 'eslint-plugin-prettier';
-
 import unusedImports from 'eslint-plugin-unused-imports';
-
 import globals from 'globals';
 
 

@@ -1,18 +1,21 @@
 {
-  "compilerOptions": {
-    "strict": true,
-    "module": "NodeNext",
-    "target": "es2017",
-    "baseUrl": "./",
-    "paths": {
-      "#*": ["./src/*"]
+    "compilerOptions": {
+        "strict": true,
+        "module": "NodeNext",
+        "target": "es2017",
+        "baseUrl": "./",
+        "paths": {
+            "#*": ["./src/*"]
+        },
+        "esModuleInterop": true,
+        "allowJs": true,
+        "checkJs": true,
+        "noEmit": false,
+        "emitDeclarationOnly": false,
+        "skipLibCheck": true,
+        "sourceMap": true,
+        "outDir": "dist"
     },
-    "esModuleInterop": true,
-    "allowJs": true,
-    "checkJs": true,
-    "noEmit": true,
-    "skipLibCheck": true
-  },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "src/**/*.test.*", "src/**/*.spec.*"]
+    "include": ["src/**/*"],
+    "exclude": ["node_modules", "src/**/*.test.*", "src/**/*.spec.*", "migrations"]
 }
