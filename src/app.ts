@@ -1,7 +1,7 @@
 import { logger } from "./lib/logger.js";
 import { loadToSheetFromDbScheduledTask, loadToDbFromWbScheduledTask, loadToDbFromWb, loadToSheetsFromDb } from "./scheduler.js";
 
-import express from "express";
+import express, { RequestHandler } from "express";
 const app = express();
 const port = 3000;
 
@@ -19,15 +19,23 @@ app.post("/wb-to-db-load", async (req, res) => {
     }
 });
 
-/** Manual trigger to upload from db to google sheets */
-app.post("/db-to-gs-load", async (req, res) => {
+/**
+ * @param req
+ * @param {string[]} req.body.spreadsheetIds
+ * @param res
+ * @returns
+ */
+const loadToSheetRouteHandler: RequestHandler = async (req, res) => {
     try {
         await loadToSheetsFromDb({ spreadsheetIds: req.body.spreadsheetIds });
         return res.status(200).send("Success");
     } catch {
         return res.status(500).send("Server Error");
     }
-});
+};
+/** Manual trigger to upload from db to google sheets */
+app.post("/db-to-gs-load", loadToSheetRouteHandler);
+
 //TODO: ADD routes to control corn tasks e.g. start/stop
 
 app.listen(port, "0.0.0.0", () => {

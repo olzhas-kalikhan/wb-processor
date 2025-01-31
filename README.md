@@ -1,4 +1,8 @@
 # WB processor
+
+Aggregates data from wb api to postgres database every 1 hour.
+Aggregates data from database to google spreadsheet every day at 00:00
+
 ## How to start
 
 Prerequisite: 
@@ -19,3 +23,7 @@ Prod:
 
 Docker:
 `docker compose up --build`
+
+## Routes
+`/wb-to-db-load` - manual load data from wildberry api to postgres 
+`/db-to-gs-load` - manual load data from database to google sheets
